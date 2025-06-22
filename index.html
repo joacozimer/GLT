@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greenlime Technologies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" href="Logo.ico" type="image/x-icon" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Mukta+Mahee:wght@700&family=Montserrat:wght@500&family=Source+Sans+Pro:wght@400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#5fa590" />
+</head>
+
+<body>
+  <button id="btn-scroll-top" aria-label="Ir arriba">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+
+  <header id="navbar">
+    <button class="logo-toggle" onclick="toggleMenu()" aria-label="Menú" aria-expanded="false" aria-controls="navbar">
+      <img id="logo-img" src="GreenLimeWhiteBackground.jpg" alt="Greenlime Logo" class="logo" />
+    </button>
+
+    <nav>
+      <a href="#inicio" onclick="closeMenu()"><i class="fas fa-home"></i> Inicio</a>
+      <a href="#servicios" onclick="closeMenu()"><i class="fas fa-concierge-bell"></i> Servicios</a>
+      <a href="#portafolio" onclick="closeMenu()"><i class="fas fa-briefcase"></i> Portafolio</a>
+      <a href="#contacto" onclick="closeMenu()"><i class="fas fa-phone"></i> Contacto</a>
+      <button class="toggle-switch" onclick="toggleDarkMode()" aria-label="Cambiar modo" id="mode-toggle"
+        aria-pressed="false">
+        <i class="fas fa-moon" id="mode-icon"></i> <span id="mode-label">Modo oscuro</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" style="background: url('FondoGLT.png') center/contain no-repeat;">
+      <h1>Bienvenido a Greenlime Technologies</h1>
+      <p>Transformamos tus ideas en soluciones tecnológicas sostenibles y eficientes.</p>
+    </section>
+
+    <section id="servicios">
+      <h1>Servicios</h1>
+      <p>Desde desarrollo web hasta inteligencia artificial. Nuestro equipo está preparado para ayudarte a innovar.</p>
+    </section>
+
+    <section id="portafolio">
+      <h1>Portafolio</h1>
+      <p>Proyectos realizados para empresas que comparten nuestra visión de un futuro más verde y tecnológico.</p>
+    </section>
+
+    <section id="contacto">
+      <h1>Contacto</h1>
+      <p>¿Tienes una idea? ¡Hablemos! Estamos listos para ayudarte a llevarla al siguiente nivel.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="social-icons">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+    <div>&copy; 2025 Greenlime Technologies. Todos los derechos reservados.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
