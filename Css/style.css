@@ -44,6 +44,7 @@ header {
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
+    /* Asegura que los items del header estén centrados verticalmente */
     justify-content: space-between;
     flex-wrap: wrap;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
@@ -56,17 +57,18 @@ header {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
-    /* Asegura que no tenga padding propio que lo haga más grande */
+    padding: 0 !important;
+    /* Fuerza que no haya padding */
     border-radius: 12px;
     box-shadow: none;
     transition: transform 0.3s ease;
     display: flex;
     align-items: center;
-    /* Centra verticalmente */
+    /* Centra verticalmente el logo */
     justify-content: center;
-    /* Centra horizontalmente */
+    /* Centra horizontalmente el logo dentro del toggle */
     line-height: 0;
+    /* Elimina espacio extra por altura de línea */
 }
 
 .logo-toggle:hover {
@@ -271,31 +273,35 @@ footer .social-icons a:hover {
         width: 90%;
         border-radius: 20px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-        /* Reducimos el padding vertical del header para que el logo tenga más espacio para centrarse */
-        padding: 0.8rem 2rem;
-        /* Ajustado el padding vertical */
+        /* Aumentamos el padding vertical del header para dar más espacio general para el centrado */
+        padding: 1rem 2rem;
+        /* Restaurado a 1rem para un poco más de altura */
+        display: flex;
+        /* Asegura flex para alinear items */
+        align-items: center;
+        /* Centra verticalmente los elementos principales del header (logo-toggle, nav-toggle) */
     }
 
     .logo-toggle {
-        padding: 0;
+        padding: 0 !important;
+        /* Fuerza la eliminación de padding */
         margin-bottom: 0;
         width: auto;
         display: flex;
-        align-items: center;
-        /* Centra verticalmente el logo */
+        align-items: center !important;
+        /* Fuerza el centrado vertical del logo dentro de este contenedor */
         justify-content: flex-start;
+        /* Mantiene el logo a la izquierda */
         line-height: 0;
-        /* Podemos añadir un min-height al logo-toggle si el logo es muy pequeño
-           y queremos asegurar una altura mínima para el centrado. */
-        min-height: 50px;
-        /* Asegura una altura mínima para el logo-toggle */
+        min-height: 60px;
+        /* Aumentamos la altura mínima del contenedor para asegurar espacio para el logo */
     }
 
     .logo {
-        height: 58px;
-        /* Aumentado ligeramente el tamaño del logo */
-        max-width: 200px;
-        /* Aumentado ligeramente el tamaño del logo */
+        height: 60px !important;
+        /* Aumentado ligeramente el tamaño del logo y forzado */
+        max-width: 220px !important;
+        /* Aumentado ligeramente el tamaño del logo y forzado */
         box-shadow: none;
     }
 
@@ -355,18 +361,19 @@ footer .social-icons a:hover {
 
 @media (max-width: 480px) {
     .logo {
-        height: 48px;
-        /* Aumentado para pantallas muy pequeñas */
-        max-width: 150px;
+        height: 50px !important;
+        /* Aumentado y forzado para pantallas muy pequeñas */
+        max-width: 180px !important;
+        /* Aumentado y forzado */
     }
 
     header {
-        padding: 0.6rem;
+        padding: 0.8rem;
         /* Ajusta el padding general del header para pantallas pequeñas */
     }
 
     .logo-toggle {
-        min-height: 48px;
+        min-height: 50px;
         /* Ajusta la altura mínima para pantallas pequeñas */
     }
 
