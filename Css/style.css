@@ -54,20 +54,23 @@ header {
 
 .logo-toggle {
     background: none;
+    /* Asegura que no tenga fondo propio */
     border: none;
     cursor: pointer;
     padding: 0;
+    /* Elimina cualquier padding que lo haga más grande que la imagen */
     border-radius: 12px;
     box-shadow: none;
+    /* Elimina la sombra del botón, la aplicaremos al logo */
     transition: transform 0.3s ease;
     display: flex;
+    /* Para centrar la imagen dentro */
     align-items: center;
+    /* Centra verticalmente */
     justify-content: center;
+    /* Centra horizontalmente */
     line-height: 0;
-    padding: 0;
-    margin-bottom: 0;
-    width: auto;
-    justify-content: flex-start;
+    /* Elimina espacio extra */
 }
 
 .logo-toggle:hover {
@@ -82,6 +85,7 @@ header {
     display: block;
     transition: opacity var(--logo-transition), filter var(--logo-transition), transform 0.4s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    /* Aplica la sombra al logo directamente */
 }
 
 .logo-toggle:hover .logo {
@@ -130,6 +134,7 @@ nav a:hover::after {
 nav a:hover {
     background-color: rgba(255, 255, 255, 0.18);
     transform: none;
+    /* Elimina el zoom al pasar el mouse en el menú */
     color: #145a32;
 }
 
@@ -165,10 +170,8 @@ section {
 }
 
 /* Ajuste de padding para la primera sección cuando el header es flotante en móvil */
-/* Se necesitará un padding extra para que el contenido no quede debajo del header */
 @media (max-width: 768px) {
     #inicio {
-        /* Altura estimada del header móvil (logo + padding) + top + margen de seguridad */
         padding-top: 180px;
         /* Incrementado para acomodar el header flotante */
     }
@@ -275,17 +278,25 @@ footer .social-icons a:hover {
         width: 90%;
         border-radius: 20px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-        /* Restaura la sombra del header */
+        /* Restauramos la sombra al header principal */
         padding: 1rem 2rem;
-        /* Restaura padding original del header */
+        /* Restauramos padding original del header */
     }
 
     .logo-toggle {
         padding: 0;
+        /* Asegura que no haya padding que le dé un fondo extra */
         margin-bottom: 0;
-        /* No necesitamos margin-bottom aquí, el padding del header es suficiente */
         width: auto;
+        /* Permite que el ancho se ajuste al contenido (el logo) */
+        display: flex;
+        /* Habilita flexbox para centrado */
+        align-items: center;
+        /* Centra verticalmente el logo */
         justify-content: flex-start;
+        /* Alinea el logo a la izquierda dentro del toggle */
+        line-height: 0;
+        /* Elimina cualquier espacio vertical extra */
     }
 
     .logo {
@@ -310,9 +321,8 @@ footer .social-icons a:hover {
         /* El nav desplegado sí tiene radio inferior */
         padding-top: 0;
         padding-bottom: 10px;
-        /* La sombra del nav solo cuando está abierto, si el header ya la tiene */
         box-shadow: none;
-        /* Eliminamos la sombra del nav para evitar duplicidad si el header ya tiene */
+        /* Elimina la sombra por defecto del nav */
     }
 
     header.nav-open nav {
@@ -320,8 +330,8 @@ footer .social-icons a:hover {
         opacity: 1;
         pointer-events: auto;
         padding-top: 10px;
-        /* Si quieres una sombra debajo del menú desplegado (separada del header), añádela aquí */
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        /* La sombra se aplica solo cuando el nav está abierto */
     }
 
     header.nav-open nav a:first-child {
@@ -367,10 +377,9 @@ footer .social-icons a:hover {
         /* Ajusta el padding general del header para pantallas pequeñas */
     }
 
-    /* Ajuste de padding para la primera sección en pantallas muy pequeñas */
     #inicio {
         padding-top: 160px;
-        /* Ajuste para pantallas aún más pequeñas si es necesario */
+        /* Ajuste para pantallas muy pequeñas, si es necesario */
     }
 }
 
