@@ -2,7 +2,9 @@ function setLogoByMode(isDark) {
     const logo = document.getElementById('logo-img');
     logo.style.opacity = 0;
     setTimeout(() => {
-        logo.src = isDark ? 'GreenLimeGreyBackground.jpg' : 'GreenLimeWhiteBackground.jpg';
+        logo.src = isDark
+            ? 'Img/GreenLimeGreyBackground.jpg'
+            : 'Img/GreenLimeWhiteBackground.jpg';
         logo.style.opacity = 1;
     }, 250);
 }
@@ -56,10 +58,9 @@ document.addEventListener('click', function (e) {
     }
 });
 
-// Inicializa modo al cargar DOM
 document.addEventListener('DOMContentLoaded', setInitialMode);
 
-// Scroll to top button
+// Botón scroll top
 const scrollTopBtn = document.getElementById('btn-scroll-top');
 
 window.addEventListener('scroll', () => {
@@ -74,3 +75,11 @@ scrollTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+// Oculta preloader al terminar de cargar la página
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.style.display = 'none';
+    }
+});
+  

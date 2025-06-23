@@ -2,18 +2,19 @@ const CACHE_NAME = 'greenlime-cache-v1';
 const urlsToCache = [
     '/',
     '/index.html',
-    '/style.css',
-    '/script.js',
-    '/GreenLimeWhiteBackground.jpg',
-    '/GreenLimeGreyBackground.jpg',
-    '/FondoGLT.png',
+    '/Css/style.css',
+    '/Js/script.js',
+    '/Img/GreenLimeWhiteBackground.jpg',
+    '/Img/GreenLimeGreyBackground.jpg',
+    '/Img/FondoGLT.png',
+    '/Img/Logo.ico',
 ];
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => cache.addAll(urlsToCache))
-            .then(self.skipWaiting())
+            .then(() => self.skipWaiting())
     );
 });
 
