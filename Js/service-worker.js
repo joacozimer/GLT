@@ -1,13 +1,14 @@
 const CACHE_NAME = 'greenlime-cache-v1';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/Css/style.css',
-    '/Js/script.js',
-    '/Img/GreenLimeWhiteBackground.jpg',
-    '/Img/GreenLimeGreyBackground.jpg',
-    '/Img/FondoGLT.png',
-    '/Img/Logo.ico',
+    './', // Current directory for index.html
+    './index.html',
+    './Css/style.css',
+    './Js/script.js',
+    './Img/GreenLimeWhiteBackground.jpg',
+    './Img/GreenLimeGreyBackground.jpg',
+    './Img/FondoGLT.png',
+    './Img/Logo.ico',
+    './Js/manifest.json', // Cache the manifest file
 ];
 
 self.addEventListener('install', (event) => {

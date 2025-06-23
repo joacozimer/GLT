@@ -28,15 +28,15 @@
   </div>
 
   <header id="navbar">
-    <button class="logo-toggle" onclick="toggleMenu()" aria-label="Menú" aria-expanded="false" aria-controls="navbar">
+    <button class="logo-toggle" onclick="toggleMenu()" aria-label="Menú" aria-expanded="false"
+      aria-controls="navbar-nav">
       <img id="logo-img" src="Img/GreenLimeWhiteBackground.jpg" alt="Greenlime Logo" class="logo" />
     </button>
 
-    <nav>
-      <a href="#inicio" onclick="closeMenu()"><i class="fas fa-home"></i> Inicio</a>
-      <a href="#servicios" onclick="closeMenu()"><i class="fas fa-concierge-bell"></i> Servicios</a>
-      <a href="#portafolio" onclick="closeMenu()"><i class="fas fa-briefcase"></i> Portafolio</a>
-      <a href="#contacto" onclick="closeMenu()"><i class="fas fa-phone"></i> Contacto</a>
+    <nav id="navbar-nav"> <a href="#inicio"><i class="fas fa-home"></i> Inicio</a>
+      <a href="#servicios"><i class="fas fa-concierge-bell"></i> Servicios</a>
+      <a href="#portafolio"><i class="fas fa-briefcase"></i> Portafolio</a>
+      <a href="#contacto"><i class="fas fa-phone"></i> Contacto</a>
       <button class="toggle-switch" onclick="toggleDarkMode()" aria-label="Cambiar modo" id="mode-toggle"
         aria-pressed="false">
         <i class="fas fa-moon" id="mode-icon"></i> <span id="mode-label">Modo oscuro</span>
@@ -45,19 +45,21 @@
   </header>
 
   <main>
-    <section id="inicio" style="background: url('Img/FondoGLT.png') center/contain no-repeat;">
+    <section id="inicio">
       <h1>Bienvenido a Greenlime Technologies</h1>
       <p>Transformamos tus ideas en soluciones tecnológicas sostenibles y eficientes.</p>
     </section>
 
     <section id="servicios">
       <h1>Servicios</h1>
-      <p>Desde desarrollo web hasta inteligencia artificial. Nuestro equipo está preparado para ayudarte a innovar.</p>
+      <p>Desde desarrollo web hasta inteligencia artificial. Nuestro equipo está preparado para ayudarte a
+        innovar.</p>
     </section>
 
     <section id="portafolio">
       <h1>Portafolio</h1>
-      <p>Proyectos realizados para empresas que comparten nuestra visión de un futuro más verde y tecnológico.</p>
+      <p>Proyectos realizados para empresas que comparten nuestra visión de un futuro más verde y tecnológico.
+      </p>
     </section>
 
     <section id="contacto">

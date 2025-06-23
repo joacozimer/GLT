@@ -6,10 +6,9 @@
     --light-bg: #f0fff0;
     --light-text: var(--gray);
     --logo-transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    transition: all 0.5s ease-in-out;
+    transition: all 0.6s ease-in-out;
 }
 
-/* Reset */
 * {
     box-sizing: border-box;
 }
@@ -23,17 +22,19 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     background-color: var(--light-bg);
     color: var(--light-text);
-    transition:
-        background-color 1.2s ease-in-out,
-        color 1.2s ease-in-out;
+    transition: background-color 0.8s ease, color 0.8s ease;
 }
+
+body.mode-switching {
+    transition: background-color 0.8s ease, color 0.8s ease !important;
+}
+
 
 body.dark-mode {
     background-color: var(--dark-bg);
     color: var(--dark-text);
 }
 
-/* Header */
 header {
     position: fixed;
     top: 20px;
@@ -50,13 +51,9 @@ header {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     z-index: 1000;
     border-radius: 20px;
-    transition:
-        background-color 1.2s ease-in-out,
-        color 1.2s ease-in-out,
-        box-shadow 0.6s ease-in-out;
+    transition: background-color 0.8s ease, color 0.8s ease, box-shadow 0.5s ease;
 }
 
-/* Logo toggle */
 .logo-toggle {
     background: none;
     border: none;
@@ -75,26 +72,21 @@ header {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
 }
 
-/* Logo */
 .logo {
     height: 56px;
     max-width: 220px;
     border-radius: 12px;
     object-fit: cover;
-    transition:
-        opacity var(--logo-transition),
-        filter var(--logo-transition),
-        transform 0.3s ease;
     display: block;
+    transition: opacity var(--logo-transition), filter var(--logo-transition), transform 0.4s ease;
 }
 
-/* Navigation */
 nav {
     display: flex;
     gap: 1rem;
     margin-left: 2rem;
     font-family: 'Montserrat', sans-serif;
-    transition: max-height 0.6s ease, opacity 0.6s ease;
+    transition: max-height 0.6s ease, opacity 0.6s ease, color 0.6s ease;
 }
 
 nav a {
@@ -103,15 +95,12 @@ nav a {
     font-weight: 500;
     padding: 0.4rem 0.8rem;
     border-radius: 20px;
-    transition:
-        background-color 0.3s ease,
-        transform 0.3s ease,
-        color 0.3s ease;
     display: flex;
     align-items: center;
     gap: 6px;
     text-transform: uppercase;
     position: relative;
+    transition: all 0.3s ease;
 }
 
 nav a::after {
@@ -136,7 +125,6 @@ nav a:hover {
     color: #145a32;
 }
 
-/* Toggle Switch */
 .toggle-switch {
     background: none;
     border: none;
@@ -149,7 +137,6 @@ nav a:hover {
     padding: 0.4rem 0.8rem;
     border-radius: 20px;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    outline: none;
 }
 
 .toggle-switch:hover {
@@ -157,7 +144,6 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-/* Sections */
 section {
     min-height: 100vh;
     padding: 160px 40px 60px;
@@ -167,49 +153,62 @@ section {
     align-items: center;
     text-align: center;
     animation: fadeInUp 1s ease, floatIn 2s ease;
-    transition:
-        background-color 1.2s ease-in-out,
-        color 1.2s ease-in-out;
+    transition: background-color 1s ease, color 1s ease;
+    /* Ensure sections transition smoothly */
 }
 
-/* Inicio section with background image */
 #inicio {
-    background: url('FondoGLT.png') center/contain no-repeat;
+    background: url('../Img/FondoGLT.png') center/cover no-repeat;
+    /* Updated path */
     color: white;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    transition: background 0.8s ease, color 0.8s ease;
 }
 
-/* Alternate section background */
 section:nth-child(even) {
     background-color: #e8f5e9;
+    transition: background-color 0.8s ease;
+    /* Smooth transition for alternating sections */
 }
 
 body.dark-mode section:nth-child(even) {
     background-color: #222;
 }
 
-/* Headings */
 h1 {
     font-family: 'Mukta Mahee', sans-serif;
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: var(--dark-text);
+    color: var(--light-text);
+    /* Default color for h1 in light mode */
     animation: zoomIn 1.2s ease, pulse 2.5s ease-in-out infinite;
-    transition: color 1.2s ease-in-out;
+    transition: color 0.8s ease;
+    /* Smooth transition for h1 color */
 }
 
-/* Paragraphs */
+body.dark-mode h1 {
+    color: var(--dark-text);
+    /* Color for h1 in dark mode */
+}
+
 p {
     font-family: 'Source Sans Pro', sans-serif;
     max-width: 700px;
     line-height: 1.8;
     font-size: 1.2rem;
-    color: var(--dark-text);
+    color: var(--light-text);
+    /* Default color for p in light mode */
     animation: fadeInUp 1.5s ease;
-    transition: color 1.2s ease-in-out;
+    transition: color 0.8s ease;
+    /* Smooth transition for p color */
 }
 
-/* Footer */
+body.dark-mode p {
+    color: var(--dark-text);
+    /* Color for p in dark mode */
+}
+
+
 footer {
     text-align: center;
     padding: 40px 20px;
@@ -219,7 +218,7 @@ footer {
     flex-direction: column;
     gap: 10px;
     align-items: center;
-    transition: background-color 1.2s ease-in-out, color 1.2s ease-in-out;
+    transition: background-color 0.8s ease, color 0.8s ease;
 }
 
 footer .social-icons {
@@ -237,8 +236,6 @@ footer .social-icons a:hover {
     color: #145a32;
     transform: scale(1.2);
 }
-
-/* Responsive */
 
 @media (max-width: 900px) {
     header {
@@ -270,11 +267,13 @@ footer .social-icons a:hover {
         transition: max-height 0.5s ease, opacity 0.4s ease;
         background-color: var(--green);
         border-radius: 0 0 20px 20px;
-        padding: 0.5rem 0;
+        padding: 0;
+        /* Remove padding here, add to links/buttons instead */
     }
 
     header.nav-open nav {
         max-height: 500px;
+        /* Adjust as needed */
         opacity: 1;
         pointer-events: auto;
     }
@@ -288,6 +287,7 @@ footer .social-icons a:hover {
         font-size: 1rem;
         color: #ffffff;
         padding: 0.6rem 1.2rem;
+        /* Add padding here */
     }
 
     nav a:hover,
@@ -375,7 +375,7 @@ footer .social-icons a:hover {
     }
 }
 
-/* Scroll to top button */
+/* Scroll to top */
 
 #btn-scroll-top {
     position: fixed;
@@ -392,7 +392,8 @@ footer .social-icons a:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+    transition: opacity 0.4s ease, visibility 0.4s ease, background-color 0.3s ease;
+    /* Added background-color transition */
     z-index: 1100;
 }
 
@@ -415,7 +416,8 @@ footer .social-icons a:hover {
     justify-content: center;
     align-items: center;
     z-index: 2000;
-    transition: opacity 0.5s ease;
+    transition: background-color 0.6s ease, opacity 0.5s ease;
+    /* Smooth transition for preloader */
 }
 
 body.dark-mode #preloader {

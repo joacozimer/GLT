@@ -7,12 +7,12 @@
     "theme_color": "#5fa590",
     "icons": [
         {
-            "src": "GreenLimeWhiteBackground.jpg",
+            "src": "Img/GreenLimeWhiteBackground.jpg",
             "sizes": "192x192",
             "type": "image/jpeg"
         },
         {
-            "src": "GreenLimeWhiteBackground.jpg",
+            "src": "Img/GreenLimeGreyBackground.jpg",
             "sizes": "512x512",
             "type": "image/jpeg"
         }
