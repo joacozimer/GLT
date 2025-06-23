@@ -6,7 +6,6 @@
     --light-bg: #f0fff0;
     --light-text: var(--gray);
     --logo-transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Global transition, but more specific ones are better */
 }
 
 * {
@@ -23,7 +22,6 @@ body {
     background-color: var(--light-bg);
     color: var(--light-text);
     transition: background-color 0.8s ease, color 0.8s ease;
-    /* Smooth transition for body colors */
 }
 
 body.mode-switching {
@@ -58,21 +56,25 @@ header {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px;
-    /* Added padding */
+    padding: 0;
+    /* Eliminado el padding para que sea del tamaño de la imagen */
     border-radius: 12px;
-    /* Removed overflow: hidden; */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Mantenemos el radio para el contenedor */
+    /* El box-shadow se lo aplicaremos al .logo directamente si es necesario, o lo quitamos del toggle */
+    box-shadow: none;
+    /* Quitamos la sombra del toggle para que no lo agrande */
+    transition: transform 0.3s ease;
+    /* Solo transicionamos el transform si es que lo vamos a usar */
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Centered content */
+    line-height: 0;
+    /* Aseguramos que no haya espacio extra por la altura de línea */
 }
 
 .logo-toggle:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    transform: scale(1.03);
+    /* Un ligero zoom en el toggle al pasar el mouse (opcional) */
 }
 
 .logo {
@@ -81,8 +83,18 @@ header {
     border-radius: 12px;
     object-fit: cover;
     display: block;
-    transition: opacity var(--logo-transition), filter var(--logo-transition), transform 0.4s ease;
+    transition: opacity var(--logo-transition), filter var(--logo-transition), transform 0.4s ease, box-shadow 0.3s ease;
+    /* Añadimos box-shadow a la transición */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    /* Aplicamos la sombra directamente al logo */
 }
+
+/* Podemos añadir un efecto de hover directamente al logo si el toggle no lo tiene */
+.logo-toggle:hover .logo {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    /* Sombra más pronunciada al pasar el mouse */
+}
+
 
 nav {
     display: flex;
@@ -124,7 +136,8 @@ nav a:hover::after {
 
 nav a:hover {
     background-color: rgba(255, 255, 255, 0.18);
-    transform: scale(1.08);
+    transform: none;
+    /* ELIMINADO EL ZOOM AL PASAR EL MOUSE EN EL MENÚ */
     color: #145a32;
 }
 
@@ -157,12 +170,10 @@ section {
     text-align: center;
     animation: fadeInUp 1s ease, floatIn 2s ease;
     transition: background-color 1s ease, color 1s ease;
-    /* Ensure sections transition smoothly */
 }
 
 #inicio {
     background: url('../Img/FondoGLT.png') center/cover no-repeat;
-    /* Changed to cover */
     color: white;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     transition: background 0.8s ease, color 0.8s ease;
@@ -171,7 +182,6 @@ section {
 section:nth-child(even) {
     background-color: #e8f5e9;
     transition: background-color 0.8s ease;
-    /* Smooth transition for alternating sections */
 }
 
 body.dark-mode section:nth-child(even) {
@@ -183,15 +193,12 @@ h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
     color: var(--light-text);
-    /* Default color for h1 in light mode */
     animation: zoomIn 1.2s ease, pulse 2.5s ease-in-out infinite;
     transition: color 0.8s ease;
-    /* Smooth transition for h1 color */
 }
 
 body.dark-mode h1 {
     color: var(--dark-text);
-    /* Color for h1 in dark mode */
 }
 
 p {
@@ -200,15 +207,12 @@ p {
     line-height: 1.8;
     font-size: 1.2rem;
     color: var(--light-text);
-    /* Default color for p in light mode */
     animation: fadeInUp 1.5s ease;
     transition: color 0.8s ease;
-    /* Smooth transition for p color */
 }
 
 body.dark-mode p {
     color: var(--dark-text);
-    /* Color for p in dark mode */
 }
 
 
@@ -262,37 +266,38 @@ footer .social-icons a:hover {
 @media (max-width: 768px) {
     header {
         padding-bottom: 0;
-        /* Reset padding */
         width: 100%;
-        /* Full width header */
         top: 0;
-        /* Stick to top */
         left: 0;
-        /* Stick to left */
         transform: none;
-        /* Remove transform */
-        border-radius: 0 0 20px 20px;
-        /* Rounded bottom corners only */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        /* Added subtle shadow */
+        border-radius: 0;
+        box-shadow: none;
+        padding: 10px 1rem 0;
+        /* Padding superior e inferior para el contenido principal del header */
     }
 
     .logo-toggle {
-        padding: 10px 15px;
-        /* Increased padding */
+        padding: 0;
+        /* Aseguramos que no haya padding aquí */
         margin-bottom: 10px;
-        /* Added margin below toggle */
+        /* Separación del menú */
         background-color: transparent;
-        /* Ensure no button background */
         box-shadow: none;
-        /* Removed box-shadow */
+        width: auto;
+        /* Dejamos que el ancho se ajuste al contenido */
+        justify-content: flex-start;
+        /* IMPORTANTE: Si el logo debe ir centrado, cambiar a 'center' */
+        /* Si solo quieres que el logo-toggle tenga el tamaño del logo, puedes eliminar
+           el 'display: flex' y 'justify-content' si el logo es el único contenido. */
     }
 
     .logo {
         height: 40px;
         max-width: 140px;
         margin-bottom: 0;
-        /* Removed specific margin */
+        /* ELIMINADO: box-shadow del logo aquí en móvil para limpiar el diseño.
+           La sombra general del nav debería ser suficiente. */
+        box-shadow: none;
     }
 
     nav {
@@ -302,13 +307,12 @@ footer .social-icons a:hover {
         max-height: 0;
         opacity: 0;
         pointer-events: none;
-        transition: max-height 0.5s ease, opacity 0.4s ease;
+        transition: max-height 0.5s ease, opacity 0.4s ease, box-shadow 0.3s ease;
         background-color: var(--green);
         border-radius: 0 0 20px 20px;
         padding-top: 0;
-        /* Changed to 0, will add when open */
         padding-bottom: 10px;
-        /* Added padding */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     }
 
     header.nav-open nav {
@@ -316,15 +320,11 @@ footer .social-icons a:hover {
         opacity: 1;
         pointer-events: auto;
         padding-top: 10px;
-        /* Added padding to opened nav */
     }
 
-    /* NEW RULE: Add padding to the first menu item when nav is open */
     header.nav-open nav a:first-child {
         padding-top: 1.5rem;
-        /* Pushes "Inicio" down */
     }
-
 
     nav a,
     .toggle-switch {
@@ -335,12 +335,13 @@ footer .social-icons a:hover {
         font-size: 1rem;
         color: #ffffff;
         padding: 0.8rem 1.2rem;
-        /* Increased padding */
     }
 
     nav a:hover,
     .toggle-switch:hover {
         background-color: rgba(255, 255, 255, 0.15);
+        transform: none;
+        /* ELIMINADO EL ZOOM EN EL MODO OSCURO/CLARO AL PASAR EL MOUSE EN MÓVIL */
     }
 
     h1 {
@@ -436,7 +437,6 @@ footer .social-icons a:hover {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease, visibility 0.4s ease, background-color 0.3s ease;
-    /* Added background-color transition */
     z-index: 1100;
 }
 
@@ -460,7 +460,6 @@ footer .social-icons a:hover {
     align-items: center;
     z-index: 2000;
     transition: background-color 0.6s ease, opacity 0.5s ease;
-    /* Smooth transition for preloader */
 }
 
 body.dark-mode #preloader {
