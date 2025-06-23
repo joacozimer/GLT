@@ -1,12 +1,12 @@
 function setLogoByMode(isDark) {
     const logo = document.getElementById('logo-img');
-    logo.style.opacity = 0; // Fade out
+    logo.style.opacity = 0;
     setTimeout(() => {
         logo.src = isDark
-            ? 'Img/GreenLimeGreyBackground.jpg'
-            : 'Img/GreenLimeWhiteBackground.jpg';
+            ? './Img/GreenLimeGreyBackground.jpg'
+            : './Img/GreenLimeWhiteBackground.jpg';
         logo.style.opacity = 1; // Fade in
-    }, 250); // Match this with --logo-transition in CSS for smoother feel
+    }, 250);
 }
 
 function setModeLabel(isDark) {
