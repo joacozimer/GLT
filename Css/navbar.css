@@ -2,21 +2,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--color-greenlime-dark);
-    padding: 10px 20px;
+    background: rgba(95, 165, 144, 0.85);
+    /* lime oscuro con transparencia */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 12px 24px;
     color: white;
     position: fixed;
     top: 20px;
     left: 20px;
     right: 20px;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.5s ease, color 0.5s ease;
-    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+    border-radius: 14px;
 }
 
 .dark-mode .navbar {
     color: var(--dark-text);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .navbar-brand img {
@@ -45,24 +49,37 @@
 .nav-links a {
     color: var(--color-white);
     text-decoration: none;
-    font-weight: bold;
-    padding: 5px 0;
-    transition: color 0.3s ease, transform 0.3s ease;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px) scale(1.05);
+}
+
+.nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: var(--color-complementary-yellow);
 }
 
 .dark-mode .nav-links a {
     color: var(--dark-navbar-link);
 }
 
-.nav-links a:hover {
+.dark-mode .nav-links a:hover {
+    background-color: rgba(0, 0, 0, 0.2);
     color: var(--color-greenlime-light);
-    transform: translateY(-2px) scale(1.05);
 }
 
 .nav-links a i {
     margin-right: 8px;
 }
 
+/* Hamburger */
 .hamburger-menu {
     display: none;
     flex-direction: column;
@@ -101,12 +118,13 @@
     transform: translateY(-11px) rotate(-45deg);
 }
 
+/* Botón de modo oscuro */
 .dark-mode-toggle {
     background: none;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--color-white);
-    padding: 8px 10px;
-    border-radius: 5px;
+    padding: 8px 12px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 0.9em;
     transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
@@ -114,6 +132,7 @@
 
 .dark-mode .dark-mode-toggle {
     color: var(--dark-text);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .dark-mode-toggle:hover {
@@ -127,40 +146,40 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Responsive */
 @media (max-width: 768px) {
     .navbar {
         left: 10px;
         right: 10px;
         margin: 10px;
         top: 10px;
+        padding: 10px 16px;
     }
 
     .navbar .nav-links {
         display: flex;
         flex-direction: column;
         width: 100%;
-        background-color: var(--color-greenlime-dark);
+        background-color: rgba(95, 165, 144, 0.95);
         position: absolute;
-        top: 70px;
+        top: calc(100% + 10px);
         left: 0;
-        padding: 0;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        max-height: 0;
+        border-radius: 12px;
         overflow: hidden;
+        max-height: 0;
         opacity: 0;
-        transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-    }
-
-    .dark-mode .navbar .nav-links {
-        background-color: var(--dark-navbar-bg);
+        transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     }
 
     .navbar .nav-links.active {
         max-height: 500px;
         opacity: 1;
-        padding: 10px 0;
+        padding: 12px 0;
+    }
+
+    .dark-mode .navbar .nav-links {
+        background-color: rgba(86, 128, 124, 0.95);
     }
 
     .nav-links li {
@@ -173,7 +192,8 @@
     }
 
     .dark-mode-toggle {
-        margin-left: 0;
-        margin-top: 10px;
+        margin: 10px auto 0 auto;
+        display: block;
+        width: fit-content;
     }
 }
