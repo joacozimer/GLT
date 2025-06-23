@@ -64,6 +64,10 @@ header {
     align-items: center;
     justify-content: center;
     line-height: 0;
+    padding: 0;
+    margin-bottom: 0;
+    width: auto;
+    justify-content: flex-start;
 }
 
 .logo-toggle:hover {
