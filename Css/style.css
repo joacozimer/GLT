@@ -272,7 +272,9 @@ footer .social-icons a:hover {
         transform: none;
         /* Remove transform */
         border-radius: 0 0 20px 20px;
-        /* Rounded bottom corners */
+        /* Rounded bottom corners only */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        /* Added subtle shadow */
     }
 
     .logo-toggle {
@@ -303,8 +305,8 @@ footer .social-icons a:hover {
         transition: max-height 0.5s ease, opacity 0.4s ease;
         background-color: var(--green);
         border-radius: 0 0 20px 20px;
-        padding-top: 10px;
-        /* Added padding */
+        padding-top: 0;
+        /* Changed to 0, will add when open */
         padding-bottom: 10px;
         /* Added padding */
     }
@@ -313,7 +315,16 @@ footer .social-icons a:hover {
         max-height: 500px;
         opacity: 1;
         pointer-events: auto;
+        padding-top: 10px;
+        /* Added padding to opened nav */
     }
+
+    /* NEW RULE: Add padding to the first menu item when nav is open */
+    header.nav-open nav a:first-child {
+        padding-top: 1.5rem;
+        /* Pushes "Inicio" down */
+    }
+
 
     nav a,
     .toggle-switch {
