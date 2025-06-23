@@ -6,7 +6,7 @@
     --light-bg: #f0fff0;
     --light-text: var(--gray);
     --logo-transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    transition: all 0.6s ease-in-out;
+    /* Global transition, but more specific ones are better */
 }
 
 * {
@@ -23,12 +23,12 @@ body {
     background-color: var(--light-bg);
     color: var(--light-text);
     transition: background-color 0.8s ease, color 0.8s ease;
+    /* Smooth transition for body colors */
 }
 
 body.mode-switching {
     transition: background-color 0.8s ease, color 0.8s ease !important;
 }
-
 
 body.dark-mode {
     background-color: var(--dark-bg);
@@ -58,13 +58,16 @@ header {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
+    padding: 5px;
+    /* Added padding */
     border-radius: 12px;
-    overflow: hidden;
+    /* Removed overflow: hidden; */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     align-items: center;
+    justify-content: center;
+    /* Centered content */
 }
 
 .logo-toggle:hover {
@@ -159,7 +162,7 @@ section {
 
 #inicio {
     background: url('../Img/FondoGLT.png') center/cover no-repeat;
-    /* Updated path */
+    /* Changed to cover */
     color: white;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     transition: background 0.8s ease, color 0.8s ease;
@@ -257,6 +260,39 @@ footer .social-icons a:hover {
 }
 
 @media (max-width: 768px) {
+    header {
+        padding-bottom: 0;
+        /* Reset padding */
+        width: 100%;
+        /* Full width header */
+        top: 0;
+        /* Stick to top */
+        left: 0;
+        /* Stick to left */
+        transform: none;
+        /* Remove transform */
+        border-radius: 0 0 20px 20px;
+        /* Rounded bottom corners */
+    }
+
+    .logo-toggle {
+        padding: 10px 15px;
+        /* Increased padding */
+        margin-bottom: 10px;
+        /* Added margin below toggle */
+        background-color: transparent;
+        /* Ensure no button background */
+        box-shadow: none;
+        /* Removed box-shadow */
+    }
+
+    .logo {
+        height: 40px;
+        max-width: 140px;
+        margin-bottom: 0;
+        /* Removed specific margin */
+    }
+
     nav {
         flex-direction: column;
         width: 100%;
@@ -267,13 +303,14 @@ footer .social-icons a:hover {
         transition: max-height 0.5s ease, opacity 0.4s ease;
         background-color: var(--green);
         border-radius: 0 0 20px 20px;
-        padding: 0;
-        /* Remove padding here, add to links/buttons instead */
+        padding-top: 10px;
+        /* Added padding */
+        padding-bottom: 10px;
+        /* Added padding */
     }
 
     header.nav-open nav {
         max-height: 500px;
-        /* Adjust as needed */
         opacity: 1;
         pointer-events: auto;
     }
@@ -286,8 +323,8 @@ footer .social-icons a:hover {
         font-weight: 500;
         font-size: 1rem;
         color: #ffffff;
-        padding: 0.6rem 1.2rem;
-        /* Add padding here */
+        padding: 0.8rem 1.2rem;
+        /* Increased padding */
     }
 
     nav a:hover,
@@ -302,11 +339,6 @@ footer .social-icons a:hover {
     p {
         font-size: 1rem;
         padding: 0 10px;
-    }
-
-    .logo {
-        height: 40px;
-        max-width: 140px;
     }
 }
 
