@@ -57,24 +57,17 @@ header {
     border: none;
     cursor: pointer;
     padding: 0;
-    /* Eliminado el padding para que sea del tamaño de la imagen */
     border-radius: 12px;
-    /* Mantenemos el radio para el contenedor */
-    /* El box-shadow se lo aplicaremos al .logo directamente si es necesario, o lo quitamos del toggle */
     box-shadow: none;
-    /* Quitamos la sombra del toggle para que no lo agrande */
     transition: transform 0.3s ease;
-    /* Solo transicionamos el transform si es que lo vamos a usar */
     display: flex;
     align-items: center;
     justify-content: center;
     line-height: 0;
-    /* Aseguramos que no haya espacio extra por la altura de línea */
 }
 
 .logo-toggle:hover {
     transform: scale(1.03);
-    /* Un ligero zoom en el toggle al pasar el mouse (opcional) */
 }
 
 .logo {
@@ -84,15 +77,11 @@ header {
     object-fit: cover;
     display: block;
     transition: opacity var(--logo-transition), filter var(--logo-transition), transform 0.4s ease, box-shadow 0.3s ease;
-    /* Añadimos box-shadow a la transición */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    /* Aplicamos la sombra directamente al logo */
 }
 
-/* Podemos añadir un efecto de hover directamente al logo si el toggle no lo tiene */
 .logo-toggle:hover .logo {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
-    /* Sombra más pronunciada al pasar el mouse */
 }
 
 
@@ -137,7 +126,6 @@ nav a:hover::after {
 nav a:hover {
     background-color: rgba(255, 255, 255, 0.18);
     transform: none;
-    /* ELIMINADO EL ZOOM AL PASAR EL MOUSE EN EL MENÚ */
     color: #145a32;
 }
 
@@ -171,6 +159,17 @@ section {
     animation: fadeInUp 1s ease, floatIn 2s ease;
     transition: background-color 1s ease, color 1s ease;
 }
+
+/* Ajuste de padding para la primera sección cuando el header es flotante en móvil */
+/* Se necesitará un padding extra para que el contenido no quede debajo del header */
+@media (max-width: 768px) {
+    #inicio {
+        /* Altura estimada del header móvil (logo + padding) + top + margen de seguridad */
+        padding-top: 180px;
+        /* Incrementado para acomodar el header flotante */
+    }
+}
+
 
 #inicio {
     background: url('../Img/FondoGLT.png') center/cover no-repeat;
@@ -265,39 +264,33 @@ footer .social-icons a:hover {
 
 @media (max-width: 768px) {
     header {
-        padding-bottom: 0;
-        width: 100%;
-        top: 0;
-        left: 0;
-        transform: none;
-        border-radius: 0;
-        box-shadow: none;
-        padding: 10px 1rem 0;
-        /* Padding superior e inferior para el contenido principal del header */
+        /* Restaura propiedades para hacerlo flotante y redondeado en móvil */
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        /* Restaura la sombra del header */
+        padding: 1rem 2rem;
+        /* Restaura padding original del header */
     }
 
     .logo-toggle {
         padding: 0;
-        /* Aseguramos que no haya padding aquí */
-        margin-bottom: 10px;
-        /* Separación del menú */
-        background-color: transparent;
-        box-shadow: none;
+        margin-bottom: 0;
+        /* No necesitamos margin-bottom aquí, el padding del header es suficiente */
         width: auto;
-        /* Dejamos que el ancho se ajuste al contenido */
         justify-content: flex-start;
-        /* IMPORTANTE: Si el logo debe ir centrado, cambiar a 'center' */
-        /* Si solo quieres que el logo-toggle tenga el tamaño del logo, puedes eliminar
-           el 'display: flex' y 'justify-content' si el logo es el único contenido. */
     }
 
     .logo {
-        height: 40px;
-        max-width: 140px;
-        margin-bottom: 0;
-        /* ELIMINADO: box-shadow del logo aquí en móvil para limpiar el diseño.
-           La sombra general del nav debería ser suficiente. */
+        height: 50px;
+        /* Aumentado el tamaño del logo para móvil */
+        max-width: 180px;
+        /* Aumentado el tamaño del logo para móvil */
         box-shadow: none;
+        /* Quitamos la sombra del logo individual en móvil */
     }
 
     nav {
@@ -310,9 +303,12 @@ footer .social-icons a:hover {
         transition: max-height 0.5s ease, opacity 0.4s ease, box-shadow 0.3s ease;
         background-color: var(--green);
         border-radius: 0 0 20px 20px;
+        /* El nav desplegado sí tiene radio inferior */
         padding-top: 0;
         padding-bottom: 10px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        /* La sombra del nav solo cuando está abierto, si el header ya la tiene */
+        box-shadow: none;
+        /* Eliminamos la sombra del nav para evitar duplicidad si el header ya tiene */
     }
 
     header.nav-open nav {
@@ -320,6 +316,8 @@ footer .social-icons a:hover {
         opacity: 1;
         pointer-events: auto;
         padding-top: 10px;
+        /* Si quieres una sombra debajo del menú desplegado (separada del header), añádela aquí */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     }
 
     header.nav-open nav a:first-child {
@@ -341,7 +339,6 @@ footer .social-icons a:hover {
     .toggle-switch:hover {
         background-color: rgba(255, 255, 255, 0.15);
         transform: none;
-        /* ELIMINADO EL ZOOM EN EL MODO OSCURO/CLARO AL PASAR EL MOUSE EN MÓVIL */
     }
 
     h1 {
@@ -356,16 +353,20 @@ footer .social-icons a:hover {
 
 @media (max-width: 480px) {
     .logo {
-        height: 32px;
-        max-width: 90px;
+        height: 40px;
+        /* Aumentado aún más para pantallas muy pequeñas */
+        max-width: 120px;
     }
 
     header {
-        padding: 0.5rem;
+        padding: 0.8rem;
+        /* Ajusta el padding general del header para pantallas pequeñas */
     }
 
-    section {
-        padding: 120px 10px 40px;
+    /* Ajuste de padding para la primera sección en pantallas muy pequeñas */
+    #inicio {
+        padding-top: 160px;
+        /* Ajuste para pantallas aún más pequeñas si es necesario */
     }
 }
 
